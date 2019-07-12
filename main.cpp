@@ -1,6 +1,6 @@
 #include <QApplication>
 #include <FelgoApplication>
-//#include "jsondata.h"
+#include "jsondata.h"
 #include <QQmlApplicationEngine>
 
 
@@ -10,7 +10,7 @@ int main(int argc, char *argv[])
   QApplication app(argc, argv);
 
   FelgoApplication felgo;
-  //qmlRegisterType<JsonData>("JsonData",1,0,"GameData");
+  qmlRegisterType<JsonData>("JsonData",1,0,"GameData");
   // QQmlApplicationEngine is the preferred way to start qml projects since Qt 5.2
   // if you have older projects using Qt App wizards from previous QtCreator versions than 3.1, please change them to QQmlApplicationEngine
   QQmlApplicationEngine engine;

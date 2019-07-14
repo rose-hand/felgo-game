@@ -22,7 +22,8 @@ RESOURCES += #    resources.qrc # uncomment for publishing
 
 
 # The .cpp file which was generated for your project. Feel free to hack it.
-SOURCES += main.cpp
+SOURCES += main.cpp \
+    jsondata.cpp
 
 android {
     ANDROID_PACKAGE_SOURCE_DIR = $$PWD/android
@@ -53,7 +54,10 @@ DISTFILES += \
     qml/entities/Mushroom.qml \
     qml/scenes/DesertScene.qml \
     qml/entities/Platform2.qml \
-    qml/common/BaseMusicals.qml
+    qml/common/BaseMusicals.qml \
+    qml/gameElements/GameLife.qml \
+    qml/scenes/DeathScene.qml
 
-HEADERS +=
+HEADERS += \
+    jsondata.h
 

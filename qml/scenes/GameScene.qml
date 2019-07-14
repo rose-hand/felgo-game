@@ -148,7 +148,7 @@ BaseScene {
             y: 576  //(32*18)
             onMonstercontact: {
                 player.x = 0
-                pla .y =0
+                player .y =0
             }
 
         }
@@ -233,59 +233,59 @@ BaseScene {
         }
         Coins{
             id:coin4
-            x:300
+            x:1370
             y:370}
         Coins{
             id:coin5
-            x:400
+            x:1420
             y:380}
         Coins{
             id:coin6
-            x:450
-            y:400}
+            x:350
+            y:350}
         Coins{
             id:coin7
-            x:500
+            x:400
             y:420}
         Coins{
             id:coin8
-            x:580
+            x:1500
             y:460}
         Coins{
             id:coin9
-            x:600
+            x:1550
             y:450}
         Coins{
             id:coin10
-            x:660
+            x:490
             y:490}
         Coins{
             id:coin11
-            x:700
+            x:580
             y:460}
         Coins{
             id:coin11a
-            x:780
+            x:690
             y:430}
         Coins{
             id:coin12
-            x:850
+            x:760
             y:520}
         Coins{
             id:coin13
-            x:900
+            x:880
             y:350}
         Coins{
             id:coin14
             x:1050
-            y:350}
+            y:400}
         Coins{
             id:coin15
-            x:1070
+            x:1660
             y:350}
         Coins{
             id:coin16
-            x:1130
+            x:1750
             y:350}
         Coins{
             id:coin18
@@ -293,11 +293,11 @@ BaseScene {
             y:380}
         Coins{
             id:coin19
-            x:1230
+            x:1770
             y:400}
         Coins{
             id:coin20
-            x:1300
+            x:300
             y:420}
 
 
@@ -379,13 +379,22 @@ BaseScene {
         height:18
         opacity: 0.2
     }
+
     CoinsScoreScene{
-        id:coinscene
+        id:scoreRectangle
         width: 40
         height: 18
         opacity: 0.2
         anchors.left: timeScene.right
 
+    }
+    GameLife{
+        id:gameLife
+        width: 32
+        height: 27
+        opacity: 1
+        anchors.left: scoreRectangle.right
+        anchors.margins: 20
     }
     Timer {
         id: updateTimer

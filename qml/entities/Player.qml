@@ -1,5 +1,6 @@
 import Felgo 3.0
 import QtQuick 2.0
+import "../gameElements"
 
 EntityBase{
     id: player
@@ -12,6 +13,7 @@ EntityBase{
     property alias collider: collider
     property alias horizontalVelocity: collider.linearVelocity.x
     property int contacts: 0
+    signal deathresenstor
 
     state: contacts > 0 ? "walking" : "jumping"
     onStateChanged: console.debug("player.state " + state)
@@ -42,21 +44,34 @@ EntityBase{
         if(linearVelocity.x < -150) linearVelocity.x = -150
       }
 
-     fixture.onBeginContact: {
-         var otherEntity = other.getBody().target
-         if(otherEntity.entityType === "spikes") {
-
-         }
-         if(otherEntity.entityType === "stone") {
-//             image.opacity = 0
-         }
-        if(otherEntity.entityType==="mushroom"){
-            player.isBig=true
-            player.y++==32
-             console.log("eqeqeq")
-    }
-
-    }
+      fixture.onBeginContact: {
+          var otherEntity = other.getBody().target
+          if(otherEntity.entityType === "spikes") {
+              gameLife.number--
+              if(gameLife.number == 0){
+                  console.log("adf")
+                  gameWindow.state="lost"
+              }
+          }
+          if(otherEntity.entityType === "stone") {
+              if(gameLife.number <= 0){
+                  return
+              }
+              gameLife.number--
+              console.log("gameLife.number"+gameLife.number)
+              if(gameLife.number == 0){
+                  console.log("123")
+                   onDeathresenstor:death()
+              }
+          }
+          if(otherEntity.entityType==="mushroom"){
+              player.isBig=true
+              player.y++==32
+          }
+          if(otherEntity.entityType === "monster") {
+              gameLife.number--
+          }
+      }
     Timer {
       id: updateTimer
 
@@ -73,8 +88,6 @@ EntityBase{
     }
 
 }
-
-
 
     function jump() {
       console.debug("jump requested at player.state " + state)

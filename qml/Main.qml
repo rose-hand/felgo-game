@@ -3,16 +3,21 @@ import QtQuick 2.0
 import "scenes"
 import JsonData 1.0
 import "common"
+import "gameElements"
 GameWindow {
   id: gameWindow
 
   screenWidth: 960
   screenHeight: 640
 
+
   GameData{
       id:gameData
-  }
 
+  }
+  CoinsScoreScene{
+    id:scoreRectangle
+  }
   FontLoader{
       id:gameFont
       source: "../assets/PaybAck.ttf"
@@ -42,6 +47,9 @@ GameWindow {
  WinScene{
      id:winscene
 
+ }
+ DeathScene{
+    id:deathscene
  }
  BaseMusicals{
      id:music
@@ -85,6 +93,12 @@ GameWindow {
           name:"win"
           PropertyChanges {target: winscene; opacity: 1}
           PropertyChanges {target: gameWindow; activeScene: winscene}
+
+      },
+      State{
+          name:"lost"
+          PropertyChanges {target: deathscene; opacity: 1}
+          PropertyChanges {target: gameWindow; activeScene: deathscene}
 
       }
  ]

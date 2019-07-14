@@ -152,7 +152,7 @@ BaseScene {
             y: 576  //(32*18)
             onMonstercontact: {
                 player.x = 0
-                pla .y =0
+                player .y =0
             }
 
         }
@@ -216,13 +216,13 @@ BaseScene {
                 player.y = 0
             }
         }
-        Coins{
+       Coins{
             id:coin1
             x:100
-            y:580
+            y:350
 
         }
-        Coins{
+      Coins{
             id:coin2
             x:160
             y:550
@@ -231,7 +231,7 @@ BaseScene {
         Coins{
             id:coin3
             x:220
-            y:350
+            y:400
 
 
         }
@@ -245,64 +245,61 @@ BaseScene {
             y:380}
         Coins{
             id:coin6
-            x:450
-            y:400}
-        Coins{
-            id:coin7
             x:500
-            y:420}
+            y:350}
+       Coins{
+            id:coin7
+            x:580
+            y:390}
         Coins{
             id:coin8
-            x:580
-            y:460}
+            x:630
+            y:430}
         Coins{
             id:coin9
-            x:600
-            y:450}
+            x:690
+            y:380}
         Coins{
             id:coin10
-            x:660
-            y:490}
+            x:760
+            y:390}
         Coins{
             id:coin11
-            x:700
+            x:830
             y:460}
         Coins{
             id:coin11a
-            x:780
-            y:430}
+            x:1650
+            y:400}
         Coins{
             id:coin12
-            x:850
+            x:940
             y:520}
         Coins{
             id:coin13
-            x:900
+            x:1000
             y:350}
-        Coins{
-            id:coin14
-            x:1050
-            y:350}
+
         Coins{
             id:coin15
-            x:1070
+            x:1090
             y:350}
-        Coins{
-            id:coin16
-            x:1130
-            y:350}
+
         Coins{
             id:coin18
-            x:1200
+            x:1210
             y:380}
-        Coins{
-            id:coin19
-            x:1230
-            y:400}
+
         Coins{
             id:coin20
-            x:1300
+            x:1350
             y:420}
+
+        Coins{
+            id:coin23
+            x:1550
+            y:420}
+
 
 
 
@@ -383,12 +380,20 @@ BaseScene {
         opacity: 0.2
     }
     CoinsScoreScene{
-        id:coinscene
+        id:scoreRectangle
         width: 40
         height: 18
         opacity: 0.2
         anchors.left: timeScene.right
 
+    }
+    GameLife{
+        id:gameLife
+        width: 32
+        height: 10
+        opacity: 1
+        anchors.left: scoreRectangle.right
+        anchors.margins: 10
     }
     Timer {
       id: updateTimer

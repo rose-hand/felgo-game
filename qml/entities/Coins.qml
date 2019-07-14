@@ -1,6 +1,7 @@
 import Felgo 3.0
 import QtQuick 2.0
-
+import JsonData 1.0
+import"../gameElements"
 EntityBase{
        id:coin
        width: 32
@@ -11,6 +12,11 @@ EntityBase{
            anchors.fill: parent
            source: "../../assets/coin/coin.png"
        }
+
+
+        function show(){
+            scoreRectangle.coinNumber=gameData.score
+        }
        CircleCollider{
        id:collider
        radius: parent.width/2
@@ -21,15 +27,22 @@ EntityBase{
        categories: Box.Category6
        collidesWith: Box.Category1
        fixture.onBeginContact: {
-               console.log("ssdfg")
-               startY.restart()
-           coinscene.coinNumber++
-       }
+           console.log("ssdfg")
+           startY.restart()
 
-       }
-       NumberAnimation on y{
-                 id:startY
-                 to:540
+       console.log(gameData.score)
+        scoreRectangle.coinNumber++
+        gameData.addScore()
+        console.log(scoreRectangle.coinNumber)
+       //gameData.score=scoreRectangle.coinNumber
+        console.log(gameData.score)
+
+   }
+
+   }
+   NumberAnimation on y{
+             id:startY
+             to:540
                  running: false
                  duration: 1000
                  onStarted: {

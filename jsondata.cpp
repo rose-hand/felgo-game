@@ -6,9 +6,12 @@
 
 JsonData::JsonData()
 {
-
+    m_score=0;
 }
-
+int JsonData::addScore()
+{
+    return ++m_score;
+}
 
 int JsonData::level() const
 {
@@ -19,6 +22,16 @@ int JsonData::level() const
 void JsonData::setLevel(int level)
 {
     m_level = level;
+}
+
+//void JsonData::setScore(int score)
+//{
+//    m_score = score;
+//}
+
+int JsonData::score() const
+{
+    return m_score;
 }
 
 
@@ -35,6 +48,7 @@ bool JsonData::load()
     QJsonDocument loadDoc(QJsonDocument::fromJson(saveData));
     QJsonObject json(loadDoc.object());
     m_level = json["level"].toInt();
+    m_score  = json["score"].toInt();
 
     return true;
 }
@@ -51,6 +65,7 @@ bool JsonData::save()
 
     QJsonObject gameData;
     gameData["level"] = m_level;  //write
+    gameData["score"] = m_score;
 
 
     QJsonDocument saveDoc(gameData);

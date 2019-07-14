@@ -107,6 +107,10 @@ Levels.LevelBase {
         column: 5
         size: 3
     }
+   /* Coins{
+        x:200
+        y:300
+    }*/
 
 //    Background {
 //        row: 0
